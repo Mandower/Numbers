@@ -13,27 +13,42 @@ public class LeapYear {
 			return false;
 	}
 
-	public static boolean prime(int x) {
-		int counter = 0;
-		for (int i = 1 + 1; i < x; i++) {
-			if (x % i == 0) {
-				counter++;
-				break;
-			}
-		}
-
-		if (counter > 0)
-			return false;
-		else
-			return true;
-	}
-
 	public static void main(String args[]) {
+		String decision;
 		String input;
 		int year;
 
+		String isD = "is divisible";
+		String isNotD = "is not divisible";
+
 		input = JOptionPane.showInputDialog("Enter a year : ");
 		year = Integer.parseInt(input);
-		JOptionPane.showMessageDialog(null, leapYear(year));
+
+		decision = "";
+
+		decision += "The year : " + year + "\n" + "\n";
+		if (year % 4 == 0)
+			decision += year + " " + isD + " by 4 \n";
+		else
+			decision += year + " " + isNotD + " by 4 \n";
+
+		if (year % 100 == 0)
+			decision += year + " " + isD + " by 100 \n";
+		else
+			decision += year + " " + isNotD + " by 100 \n";
+
+		if (year % 400 == 0)
+			decision += year + " " + isD + " by 400 \n";
+		else
+			decision += year + " " + isNotD + " by 400 \n";
+
+		if (leapYear(year) == true)
+			decision += year + " is a leap year";
+		else
+			decision += year + " is NOT a leap year";
+
+		JOptionPane.showMessageDialog(null, decision);
+
 	}
+
 }
