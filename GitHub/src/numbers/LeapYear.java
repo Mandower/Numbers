@@ -1,11 +1,15 @@
 package numbers;
 
-public class NumberCheck {
+import javax.swing.JOptionPane;
+
+public class LeapYear {
 
 	public static boolean leapYear(int x) {
-		if (x % 400 == 0 && x % 4 == 0 && x != 100)
+		if (x % 4 == 0 && x % 100 != 0)
 			return true;
-		else
+		else if (x % 100 == 0 && x % 400 == 0) {
+			return true;
+		} else
 			return false;
 	}
 
@@ -25,6 +29,11 @@ public class NumberCheck {
 	}
 
 	public static void main(String args[]) {
-		System.out.println(prime(2004545651));
+		String input;
+		int year;
+
+		input = JOptionPane.showInputDialog("Enter a year : ");
+		year = Integer.parseInt(input);
+		JOptionPane.showMessageDialog(null, leapYear(year));
 	}
 }
