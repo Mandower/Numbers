@@ -47,31 +47,115 @@ public class LeapYear {
 
 	}
 
-	public static void main(String args[]) {
-
-		int year;
+	public static void ForLeapExactCheck() {
 		String input;
-		String message;
-		boolean result = false;
-
-		do {
-
-			message = "Please select the option you want from below \n"
-					+ "1. Press 1 to Check whether a specific year is a leap year \n"
-					+ "2. Press 2 to Enter a range of year and print out all leap years within that range + \n\n"
-					+ "When you are clear about which choice to make, select \"OK\" and a text box to add your choice will appear ";
-
-			JOptionPane.showMessageDialog(null, message);
-			input = JOptionPane.showInputDialog("Enter you choice here : ");
-			result = input.equals("1") || input.equals("2");
-
-			JOptionPane.showMessageDialog(null, message);
-		} while (result == false);
+		int year;
 
 		input = JOptionPane.showInputDialog("Enter year : ");
 		year = Integer.parseInt(input);
-
 		JOptionPane.showMessageDialog(null, leapYearResults(year));
+	}
+
+	public static void selector() {
+		String input;
+		String message;
+		boolean repeat = false;
+
+		boolean result = false;
+
+		do {
+			repeat = true;
+			message = "Please select the option you want from below \n"
+					+ "1. Press 1 to Check whether a specific year is a leap year \n"
+					+ "2. Press 2 to Enter a range of year and print out all leap years within that range  \n\n"
+					+ "    " + "When you are clear about which choice to make, enter in the textbox and press \"OK\" "
+					+ "    ";
+
+			// JOptionPane.showMessageDialog(null, message);
+			input = JOptionPane.showInputDialog(message + "\n\n" + "Enter you choice here : ");
+			result = input.equals("1") || input.equals("2");
+
+			// main menu selection
+			if (input.equals("1")) {
+
+				ForLeapExactCheck();
+				do {
+					input = JOptionPane.showInputDialog(
+							"Would you like to test another year? \n\n" + "1. Enter 1 to test another year\n"
+									+ "2. Enter 2 to go back to the main menu\n" + "3. Enter 3 to exit");
+					if (input.equals("1"))
+						ForLeapExactCheck();
+					else if (input.equals("2"))
+						selector();
+					else if (input.equals("3")) {
+						JOptionPane.showMessageDialog(null, "Goodbye :-)");
+						repeat = false;
+
+					}
+
+					else {
+						JOptionPane.showMessageDialog(null,
+								"You have selected an invalid option thus you'll be taken to the main menu ");
+						selector();
+					}
+
+				} while (repeat == true);
+
+			}
+
+			// main menu selection for the list of leap years
+			else if (input.equals("2")) {
+
+				LeapYearLists leapy = new LeapYearLists();
+				leapy.LeapYearListControl();
+				do {
+					input = JOptionPane.showInputDialog(
+							"Would you like to test another year? \n\n" + "1. Enter 1 to check another range of years\n"
+									+ "2. Enter 2 to go back to the main menu\n" + "3. Enter 3 to exit");
+					if (input.equals("1"))
+						leapy.LeapYearListControl();
+					else if (input.equals("2"))
+						selector();
+					else if (input.equals("3")) {
+						JOptionPane.showMessageDialog(null, "Goodbye :-)");
+						repeat = false;
+					}
+
+					else {
+						JOptionPane.showMessageDialog(null,
+								"You have selected an invalid option thus you will return to the main menu ");
+						selector();
+					}
+
+				} while (repeat == true);
+
+			}
+
+			// main menu selection of the last option
+			else if (input.equals("3")) {
+				JOptionPane.showMessageDialog(null, "Goodbye :-) ");
+				break;
+			}
+
+			if (result == false) {
+				input = JOptionPane.showInputDialog("You have selected an invalid option : " + "\n"
+						+ "Type \"continue\" to try again " + "\n or enter any key to exit");
+				if (input.equalsIgnoreCase("continue")) {
+					selector();
+				} else {
+
+					JOptionPane.showMessageDialog(null, "You have selected an invalid option again \n GOODBYE :-) !!!");
+					break;
+				}
+
+			}
+
+		} while (result == false);
+
+	}
+
+	public static void main(String args[]) {
+		selector();
 
 	}
 
