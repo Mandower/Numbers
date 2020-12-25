@@ -13,16 +13,11 @@ public class LeapYear {
 			return false;
 	}
 
-	public static void main(String args[]) {
+	public static String leapYearResults(int year) {
 		String decision;
-		String input;
-		int year;
 
 		String isD = "is divisible";
 		String isNotD = "is not divisible";
-
-		input = JOptionPane.showInputDialog("Enter a year : ");
-		year = Integer.parseInt(input);
 
 		decision = "";
 
@@ -47,7 +42,18 @@ public class LeapYear {
 		else
 			decision += year + " is NOT a leap year";
 
-		JOptionPane.showMessageDialog(null, decision);
+		return decision;
+
+	}
+
+	public static void main(String args[]) {
+		int year;
+		String input;
+
+		input = JOptionPane.showInputDialog("Enter year : ");
+		year = Integer.parseInt(input);
+
+		JOptionPane.showMessageDialog(null, leapYearResults(year));
 
 	}
 
