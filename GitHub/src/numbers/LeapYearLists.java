@@ -9,24 +9,47 @@ public class LeapYearLists {
 	{
 		int lower;
 		int upper;
-		String input;
+		int count;
 		String output;
 
 		output = "";
 		lower = x;
 		upper = y;
 
-		input = JOptionPane.showInputDialog("Enter lower here : ");
-		input = JOptionPane.showInputDialog("Enter upper here : ");
-
 		LeapYear leap = new LeapYear();
 
+		count = 0;
+		output = "";
+
 		for (int i = lower; i <= upper; i++) {
+
+			if (leap.leapYear(i)) {
+				output += (i + " ");
+				count++;
+				if (count % 5 == 0)
+					output += "\n";
+			}
 
 		}
 
 		return output;
 
+	}
+
+	public static void LeapYearListControl() {
+		LeapYearLists leap = new LeapYearLists();
+
+		int min;
+		int max;
+		String input;
+
+		input = JOptionPane.showInputDialog("Enter the min year : ");
+		min = Integer.parseInt(input);
+
+		input = JOptionPane.showInputDialog("Enter the max year : ");
+		max = Integer.parseInt(input);
+
+		JOptionPane.showMessageDialog(null, LeapYearList(min, max));
 	}
 
 }

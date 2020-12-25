@@ -48,8 +48,25 @@ public class LeapYear {
 	}
 
 	public static void main(String args[]) {
+
 		int year;
 		String input;
+		String message;
+		boolean result = false;
+
+		do {
+
+			message = "Please select the option you want from below \n"
+					+ "1. Press 1 to Check whether a specific year is a leap year \n"
+					+ "2. Press 2 to Enter a range of year and print out all leap years within that range + \n\n"
+					+ "When you are clear about which choice to make, select \"OK\" and a text box to add your choice will appear ";
+
+			JOptionPane.showMessageDialog(null, message);
+			input = JOptionPane.showInputDialog("Enter you choice here : ");
+			result = input.equals("1") || input.equals("2");
+
+			JOptionPane.showMessageDialog(null, message);
+		} while (result == false);
 
 		input = JOptionPane.showInputDialog("Enter year : ");
 		year = Integer.parseInt(input);
