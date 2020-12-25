@@ -2,6 +2,7 @@ package numbers;
 
 import javax.swing.JOptionPane;
 
+//This method returns a boolean value whether it's a leap year or not
 public class LeapYear {
 
 	public static boolean leapYear(int x) {
