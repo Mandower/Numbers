@@ -26,7 +26,7 @@ public class LeapYearLists {
 			if (leap.leapYear(i)) {
 				output += (i + " ");
 				count++;
-				if (count % 5 == 0)
+				if (count % 15 == 0)
 					output += "\n";
 			}
 

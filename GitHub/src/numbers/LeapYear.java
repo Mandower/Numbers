@@ -72,7 +72,7 @@ public class LeapYear {
 					+ "    ";
 
 			// JOptionPane.showMessageDialog(null, message);
-			input = JOptionPane.showInputDialog(message + "\n\n" + "Enter you choice here : ");
+			input = JOptionPane.showInputDialog(message + "\n\n" + "Enter your choice here : ");
 			result = input.equals("1") || input.equals("2");
 
 			// main menu selection
@@ -134,7 +134,7 @@ public class LeapYear {
 			// main menu selection of the last option
 			else if (input.equals("3")) {
 				JOptionPane.showMessageDialog(null, "Goodbye :-) ");
-				break;
+				result = false;
 			}
 
 			if (result == false) {
