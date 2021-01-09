@@ -109,6 +109,6 @@ public class PrimeNumbers {
 			System.exit(0);
 		}
 
-	}
+	}// end
 
 }
