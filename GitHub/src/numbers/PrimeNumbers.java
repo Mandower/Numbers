@@ -17,9 +17,10 @@ public class PrimeNumbers {
 			return false;
 		else
 			return true;
-	}
+	} // This method returns true if the number is a prime and false if it's not
 
 	public static void selector() {
+
 		String choice;
 		String options = "two";
 
@@ -33,11 +34,12 @@ public class PrimeNumbers {
 			specificPrime();
 		}
 
-		else if (choice.equals("2")) {
+		else if (choice.equals("2"))
 			rangePrime();
-		}
 
-	}
+		repeater();
+
+	} // This method will select all other methods
 
 	public static void specificPrime() {
 		String input;
@@ -84,7 +86,6 @@ public class PrimeNumbers {
 				if (count % 10 == 0)
 					result += "\n";
 			}
-
 		}
 
 		return result;
@@ -98,15 +99,33 @@ public class PrimeNumbers {
 
 		input = JOptionPane.showInputDialog("Please enter your choice here ");
 
-		if (input.equals("1"))
+		if (input.equals("1")) {
 			specificPrime();
+			repeater();
+		}
 
-		else if (input.equals("2"))
+		else if (input.equals("2")) {
 			rangePrime();
+			repeater();
+		}
+
+		else if (input.equalsIgnoreCase("")) {
+			JOptionPane.showMessageDialog(null, "You haven't entered anything, please try again");
+			repeater();
+		} // This doesn't work line 124 you need to find a way where the code will
+			// recognize when the user mistakenly pressed enter and then prompt the user to
+			// enter again
+
+		else if (!(input.equals("2") || input.equals("1"))) {
+			JOptionPane.showMessageDialog(null, "You have entered an invalid option \n" + "Goodbye :-) ");
+			System.exit(0);
+
+		}
 
 		else {
 			JOptionPane.showMessageDialog(null, "Goodbye :-) ");
 			System.exit(0);
+
 		}
 
 	}// end
