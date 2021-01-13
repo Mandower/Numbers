@@ -12,7 +12,7 @@ public class PrimeNumbers
         for (int i = 2; i < (x / 2) + 1; i++)
         {
             if (x % i == 0)
-                return true;
+                return false;
         }
         return true;
     }
