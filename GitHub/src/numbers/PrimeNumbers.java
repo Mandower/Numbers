@@ -2,132 +2,135 @@ package numbers;
 
 import javax.swing.JOptionPane;
 
-public class PrimeNumbers {
+public class PrimeNumbers
+{
 
-	public static boolean prime(int x) {
-		int counter = 0;
-		for (int i = 1 + 1; i < x; i++) {
-			if (x % i == 0) {
-				counter++;
-				break;
-			}
-		}
+    public static boolean prime(int x)
+    {
+        if (x < 2)
+            return false;
+        for (int i = 2; i < (x / 2) + 1; i++)
+        {
+            if (x % i == 0)
+                return true;
+        }
+        return true;
+    }
 
-		if (counter > 0)
-			return false;
-		else
-			return true;
-	} // This method returns true if the number is a prime and false if it's not
+    public static void selector()
+    {
 
-	public static void selector() {
+        String choice;
+        String options = "two";
 
-		String choice;
-		String options = "two";
+        JOptionPane.showMessageDialog(null, "There are currently " + options + " for prime numbers \n\n"
+                + "If you enter 1 you'll only be able to test if a specific number is a prime \n"
+                + "If you enter 2 you'll be able to check a range of values you'll enter 2 numbers and all the prime numbers in that rage will be printed");
 
-		JOptionPane.showMessageDialog(null, "There are currently " + options + " for prime numbers \n\n"
-				+ "If you enter 1 you'll only be able to test if a specific number is a prime \n"
-				+ "If you enter 2 you'll be able to check a range of values you'll enter 2 numbers and all the prime numbers in that rage will be printed");
+        choice = JOptionPane.showInputDialog("1. Check if number is prime \n " + "2. Range of prime numbers");
 
-		choice = JOptionPane.showInputDialog("1. Check if number is prime \n " + "2. Range of prime numbers");
+        if (choice.equals("1"))
+        {
+            specificPrime();
+        } else if (choice.equals("2"))
+            rangePrime();
 
-		if (choice.equals("1")) {
-			specificPrime();
-		}
+        repeater();
 
-		else if (choice.equals("2"))
-			rangePrime();
+    } // This method will select all other methods
 
-		repeater();
+    public static void specificPrime()
+    {
+        String input;
+        String result;
+        int number;
 
-	} // This method will select all other methods
+        input = JOptionPane.showInputDialog("Enter the number to test here : ");
+        number = Integer.parseInt(input);
 
-	public static void specificPrime() {
-		String input;
-		String result;
-		int number;
+        if (prime(number) == true)
+            result = number + " is a prime";
 
-		input = JOptionPane.showInputDialog("Enter the number to test here : ");
-		number = Integer.parseInt(input);
+        else
+            result = number + " is NOT a prime";
 
-		if (prime(number) == true)
-			result = number + " is a prime";
+        JOptionPane.showMessageDialog(null, result);
+    }
 
-		else
-			result = number + " is NOT a prime";
+    public static void rangePrime()
+    {
+        String input;
+        int min;
+        int max;
 
-		JOptionPane.showMessageDialog(null, result);
-	}
+        input = JOptionPane.showInputDialog("Enter the lower number here : ");
+        min = Integer.parseInt(input);
+        input = JOptionPane.showInputDialog("Enter the upper number here : ");
+        max = Integer.parseInt(input);
 
-	public static void rangePrime() {
-		String input;
-		int min;
-		int max;
+        JOptionPane.showInternalMessageDialog(null, rangePrimePrinter(min, max));
+    }
 
-		input = JOptionPane.showInputDialog("Enter the lower number here : ");
-		min = Integer.parseInt(input);
-		input = JOptionPane.showInputDialog("Enter the upper number here : ");
-		max = Integer.parseInt(input);
+    public static String rangePrimePrinter(int min, int max)
+    {
+        int count;
+        String result;
 
-		JOptionPane.showInternalMessageDialog(null, rangePrimePrinter(min, max));
-	}
+        result = "";
+        count = 0;
 
-	public static String rangePrimePrinter(int min, int max) {
-		int count;
-		String result;
+        for (int i = min; i <= max; i++)
+        {
+            if (prime(i) == true)
+            {
+                result += (i + " ");
+                count++;
 
-		result = "";
-		count = 0;
+                if (count % 10 == 0)
+                    result += "\n";
+            }
+        }
 
-		for (int i = min; i <= max; i++) {
-			if (prime(i) == true) {
-				result += (i + " ");
-				count++;
+        return result;
+    }
 
-				if (count % 10 == 0)
-					result += "\n";
-			}
-		}
+    public static void repeater()
+    {
+        String input;
 
-		return result;
-	}
+        JOptionPane.showMessageDialog(null,
+                "Would you like to \n" + "1. Check specific prime \n" + "2. Check range prime \n" + "3. exit");
 
-	public static void repeater() {
-		String input;
+        input = JOptionPane.showInputDialog("Please enter your choice here ");
 
-		JOptionPane.showMessageDialog(null,
-				"Would you like to \n" + "1. Check specific prime \n" + "2. Check range prime \n" + "3. exit");
+        if (input.equals("1"))
+        {
+            specificPrime();
+            repeater();
+        } else if (input.equals("2"))
+        {
+            rangePrime();
+            repeater();
+        } else if (input.equalsIgnoreCase(""))
+        {
+            JOptionPane.showMessageDialog(null, "You haven't entered anything, please try again");
+            repeater();
+        } // This doesn't work line 124 you need to find a way where the code will
+        // recognize when the user mistakenly pressed enter and then prompt the user to
+        // enter again
 
-		input = JOptionPane.showInputDialog("Please enter your choice here ");
+        else if (!(input.equals("2") || input.equals("1")))
+        {
+            JOptionPane.showMessageDialog(null, "You have entered an invalid option \n" + "Goodbye :-) ");
+            System.exit(0);
 
-		if (input.equals("1")) {
-			specificPrime();
-			repeater();
-		}
+        } else
+        {
+            JOptionPane.showMessageDialog(null, "Goodbye :-) ");
+            System.exit(0);
 
-		else if (input.equals("2")) {
-			rangePrime();
-			repeater();
-		}
+        }
 
-		else if (input.equalsIgnoreCase("")) {
-			JOptionPane.showMessageDialog(null, "You haven't entered anything, please try again");
-			repeater();
-		} // This doesn't work line 124 you need to find a way where the code will
-			// recognize when the user mistakenly pressed enter and then prompt the user to
-			// enter again
-
-		else if (!(input.equals("2") || input.equals("1"))) {
-			JOptionPane.showMessageDialog(null, "You have entered an invalid option \n" + "Goodbye :-) ");
-			System.exit(0);
-
-		}
-
-		else {
-			JOptionPane.showMessageDialog(null, "Goodbye :-) ");
-			System.exit(0);
-
-		}
-
-	}// end
+    }// end
 
 }
