@@ -4,14 +4,18 @@ import javax.swing.JOptionPane;
 
 public class PrimeNumbers
 {
-
-    public static boolean prime(int x)
+    /**
+     * Checks if a number is a prime number
+     * @param number - the number to be checked
+     * @return returns true if number is a prime number, otherwise false
+     */
+    public static boolean isNumberPrime(int number)
     {
-        if (x < 2)
+        if (number < 2)
             return false;
-        for (int i = 2; i < (x / 2) + 1; i++)
+        for (int i = 2; i < (number / 2) + 1; i++)
         {
-            if (x % i == 0)
+            if (number % i == 0)
                 return false;
         }
         return true;
