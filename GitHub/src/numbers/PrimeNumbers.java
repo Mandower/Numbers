@@ -21,6 +21,13 @@ public class PrimeNumbers {
 
 	public static void selector() {
 
+		/*
+		This method will select all these other methods based on what the user entered
+		If the user enters 1 then the specificPrime() method will be called
+		If the user enters 2 then the rangePrime() method will be called
+		At the end of the operation the method repeater() will be called in order to prompt the user for additional choices
+		*/
+		
 		String choice;
 		String options = "two";
 
@@ -42,6 +49,13 @@ public class PrimeNumbers {
 	} // This method will select all other methods
 
 	public static void specificPrime() {
+		
+		/*
+		 * The specificPrime() method takes 1 value as an integer and checks if it's a prime and returns a message whether it's a prime or not
+		 * This method will call upon the prime(x) method and if a number is a prime then it generates an output based on what the prime(x) method returned
+		 * 
+		 */
+		
 		String input;
 		String result;
 		int number;
@@ -59,6 +73,12 @@ public class PrimeNumbers {
 	}
 
 	public static void rangePrime() {
+		/*
+		 * This method is used to accept the integer values that will be used by the method rangePrimePrinter(x,y)
+		 * this is just the method that prompts the user to enter the two values that will be used
+		 * Those two values will be the lower and upper for the printing range
+		 */
+		
 		String input;
 		int min;
 		int max;
@@ -72,12 +92,21 @@ public class PrimeNumbers {
 	}
 
 	public static String rangePrimePrinter(int min, int max) {
+		/*
+		 * This method accepts two arguments, one being the minimum value and the other being the maximum
+		 * A for loop will be used to increment from the min to the max by 1 and checking each number in that range if it's a prime
+		 * If it's a prime it will be added to the result string and if it's not then no action
+		 * This will increment until the maximum number is reached 
+		 */
+		
 		int count;
 		String result;
 
 		result = "";
 		count = 0;
 
+		//Check from min to max if it's a prime, if it's a prime add that to the result string 
+		
 		for (int i = min; i <= max; i++) {
 			if (prime(i) == true) {
 				result += (i + " ");
@@ -92,6 +121,14 @@ public class PrimeNumbers {
 	}
 
 	public static void repeater() {
+		/*
+		 * This method will keep prompting the user to enter an input
+		 * If the user enters 1 then the repeater() method will call the specificPrime() method
+		 * If the user enters 2 then the repeater() method will call the rangePrime() method
+		 * If the user doen't enter anything then the repeater() method will be called again
+		 * If the user doesn't enter 1 or 2 then it will be treated as a wrong option then the code will exit 
+		 */
+		
 		String input;
 
 		JOptionPane.showMessageDialog(null,
@@ -99,16 +136,19 @@ public class PrimeNumbers {
 
 		input = JOptionPane.showInputDialog("Please enter your choice here ");
 
+		//Option 1
 		if (input.equals("1")) {
 			specificPrime();
 			repeater();
 		}
 
+		//Option 2
 		else if (input.equals("2")) {
 			rangePrime();
 			repeater();
 		}
 
+		//In case nothing was entered then the repeater() method will be called again
 		else if (input.equalsIgnoreCase("")) {
 			JOptionPane.showMessageDialog(null, "You haven't entered anything, please try again");
 			repeater();
@@ -116,12 +156,14 @@ public class PrimeNumbers {
 			// recognize when the user mistakenly pressed enter and then prompt the user to
 			// enter again
 
+		//In case anything is not 1 or 2 the system exits
 		else if (!(input.equals("2") || input.equals("1"))) {
 			JOptionPane.showMessageDialog(null, "You have entered an invalid option \n" + "Goodbye :-) ");
 			System.exit(0);
 
 		}
 
+		//anything entered that isn't 1 or 2 then the system will exit
 		else {
 			JOptionPane.showMessageDialog(null, "Goodbye :-) ");
 			System.exit(0);
