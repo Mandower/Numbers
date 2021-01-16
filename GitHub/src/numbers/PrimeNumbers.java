@@ -98,6 +98,9 @@ public class PrimeNumbers
         return result;
     }
 
+    /**
+     * Checking pull request
+     */
     public static void repeater()
     {
         String input;
