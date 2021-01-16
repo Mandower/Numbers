@@ -52,7 +52,7 @@ public class PrimeNumbers
         input = JOptionPane.showInputDialog("Enter the number to test here : ");
         number = Integer.parseInt(input);
 
-        if (prime(number) == true)
+        if (isNumberPrime(number) == true)
             result = number + " is a prime";
 
         else
@@ -85,7 +85,7 @@ public class PrimeNumbers
 
         for (int i = min; i <= max; i++)
         {
-            if (prime(i) == true)
+            if (isNumberPrime(i) == true)
             {
                 result += (i + " ");
                 count++;
